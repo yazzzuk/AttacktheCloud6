@@ -7,13 +7,10 @@ nav_order: 2
 # ThunderDome - Flag 2 - Pulled From the Sky
 {: .no_toc }
 
-## Table of Contents
 1. TOC
 {:toc}
 
 ---
-
-# Flag 2 - Pulled From the Sky
 
 ## Recap
 
