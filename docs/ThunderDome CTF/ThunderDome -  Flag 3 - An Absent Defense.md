@@ -54,7 +54,7 @@ We then run the `Invoke-RefreshToMSGraphToken` command to exchange Nacer’s ref
 Invoke-RefreshToMSGraphToken -domain massive-pharma.com -refreshToken "<token>"
 ```
 
-Now this is interesting. We get an error which states the refresh token has expired due to inactivity and because it was `inactive for 90.00:00:00` (remember I said it typically the default lifetime is 90 days):
+Now this is interesting. We get an error which states the refresh token has expired due to inactivity and because it was `inactive for 90.00:00:00` (remember I said that typically the default lifetime is 90 days):
 
 ![img]({{ '/assets/images/flag3/Untitled 2.png' | relative_url }}){: .center-image }
 
@@ -162,7 +162,7 @@ Success! We can log into the portal:
 
 Looking at the at recent services visited under `Resources`, a couple of resources standout:
 
-- Storage account `mpprod`
+- Storage account - `mpprod`
 - Function App - `pharsight-dev`
 
 ## Azure Storage Account
@@ -240,7 +240,6 @@ The password for hash `75587e5e2c48b2be2ff1db3f279bf106943fbc0e1e1e7ed9228c5d874
 
 ![img]({{ '/assets/images/flag3/Untitled 20.png' | relative_url }}){: .center-image }
 
-
 The password is for the Test Acc user - [`testacc@massive-pharma.com`](mailto:testacc@massive-pharma.com). We’ll add this username and password to our loot.
 
 ## Azure Function App
@@ -263,7 +262,7 @@ Let’s test this in the browser:
 
 We can see from the above that the endpoint accepts a variable called `trialname`. Let’s find out if it’s vulnerable to injection attacks. Since the endpoint returns the message `enter a clinical trial name to return a list of participants and health information` this means it’s highly likely it’s pulling the information from a database. Since we’re dealing with Azure, it may be CosmosDB (NoSQL) or SQL Server. Remember in flag 2 where TruffleHog found `Detector Type: SQLServer` entries? With this bit of intel, let’s fire up Burp Suite and see what we can do with SQL injection.
 
-With Burp running, `cURL` the endpoint:
+With Burp running, `cURL` the endpoint (your port configuration may differ, 8080 is default):
 
 ```bash
 curl -k -x http://127.0.0.1:8080 -L https://pharsight-dev.azurewebsites.net/api/HttpPharSightTrigger01
@@ -285,7 +284,7 @@ Nothing. Before we move on to another payload, let’s try and change our reques
 
 Success! Looks like the API has returned data related to people participating in medical trials. There are plenty of SQL injection tutorials out there (Port Swigger is a good start) but the payload we sent essentially says for `trialname` if `1=1`, return the entry, so you’ll see entries for various different `trialname`s.
 
-Although we have managed to get a bunch of sensitive data, there’s nothing interesting in the output and no flag; however, we have confirmed the endpoint is vulnerable to SQL injection - to be specific, boolean-based injection. Let’s try another type of injection - time-based. This type of injection uses SQL commands to trigger delays, allowing an attacker to infer certain information based on the delay in response from the database. We’ll send another request to the endpoint but this time with the payload `"' WAITFOR DELAY '0:0:10';--"`. This causes the database to wait for 10 seconds before proceeding with the next operation. I chose 10 seconds as a figure because it shows an obvious delay and allows for latency. Let’s send this request:
+Although we have managed to get a bunch of sensitive data, there’s nothing interesting in the output and no flag; however, we have confirmed the endpoint is vulnerable to SQL injection - to be specific, boolean-based injection. Let’s try another type of injection - time-based. This type of injection uses SQL commands to trigger delays, allowing an attacker to infer certain information based on the delay in response from the database. We’ll send another request to the endpoint but this time with the payload `"' WAITFOR DELAY '0:0:10';--"`. This causes the database to wait for 10 seconds before proceeding with the next operation. I chose 10 seconds as a conservative number because it shows an obvious delay and allows for latency. Let’s send this request:
 
 ![img]({{ '/assets/images/flag3/Untitled 27.png' | relative_url }}){: .center-image }
 
@@ -316,7 +315,7 @@ sqlmap -r flag3sql.r --batch --technique=T -p "trialname" --skip-urlencode --dbs
 
 > Note - we’re using time-based injection so the following SQLMap activities may take a while.
 
-Also note - multi-threading (`--threads`)is not recommended for time-based attacks as it can lead to inaccurate results. If you do use multithreading, SQLMap will disable it by default then you use the `--batch` flag.
+Also note - multi-threading (`--threads`) is not recommended for time-based attacks as it can lead to inaccurate results. If you do use multithreading, SQLMap will disable it by default when you use the `--batch` flag.
 
 If you quit SQLMap and come back to it later, you can find previous activity under `<user path>/.local/share/sqlmap/output/pharsight-dev.azurewebsites.net/log`
 > 
@@ -364,4 +363,4 @@ sqlmap -r flag3sql.r --batch --technique=T -p "trialname" --skip-urlencode -D ph
 
 ![img]({{ '/assets/images/flag3/Untitled 31.png' | relative_url }}){: .center-image }
 
-Two entries are returned, one of which is flag 3! We also see a username and password for Nina - add that to your loot, you’ll need that as we move on to flag 4. She sells sea shells by the ~~sea shore~~ Windows.
+Two entries are returned, one of which is flag 3! We also see a username and password for Nina - add that to your loot, you’ll need that as we move on to flag 4. She sells sea shells by the ~~sea shore~~ Win-dows.
