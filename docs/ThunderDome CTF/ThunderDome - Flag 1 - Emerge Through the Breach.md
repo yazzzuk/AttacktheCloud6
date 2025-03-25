@@ -1,6 +1,6 @@
 ---
-title: Thunderdome - Flag 1 - Emerge Through the Breach
-parent: Thunderdome CTF
+title: ThunderDome - Flag 1 - Emerge Through the Breach
+parent: ThunderDome CTF
 nav_order: 1
 ---
 
