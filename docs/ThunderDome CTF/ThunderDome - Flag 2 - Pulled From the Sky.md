@@ -5,6 +5,7 @@ nav_order: 2
 ---
 
 # ThunderDome - Flag 2 - Pulled From the Sky
+{: .no_toc }
 
 ## Table of contents
 {: .no_toc .text-delta }
