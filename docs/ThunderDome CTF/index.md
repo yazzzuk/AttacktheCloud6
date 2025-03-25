@@ -7,7 +7,7 @@ nav_order: 3
 {: .no_toc }
 
 <p align="center">
-    ![img]({{ '/assets/images/ThunderDomeLogo.png' | relative_url }})
+    ![img]({{ '/assets/images/ThunderDomeLogo.png' | relative_url }}){: .center-image }
 </p>
 
 ## Pwned Labs ThunderDome is a fun and immersive multi-cloud cyber range that simulates a realistic company environment across AWS, Azure and GCP. 
