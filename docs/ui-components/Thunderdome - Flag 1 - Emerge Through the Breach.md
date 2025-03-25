@@ -1,6 +1,6 @@
 ---
 title: Thunderdome - Flag 1 - Emerge Through the Breach
-parent: UI Components
+parent: Thunderdom CTF
 nav_order: 1
 ---
 
