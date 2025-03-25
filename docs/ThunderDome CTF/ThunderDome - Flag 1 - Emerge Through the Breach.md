@@ -8,9 +8,8 @@ nav_order: 1
 {: .no_toc }
 
 ## Table of Contents
-{: .no_toc .text-delta }
-
-{% toc heading_level=2 %}
+1. TOC
+{:toc}
 
 ---
 # Flag 1 - Emerge Through the Breach
