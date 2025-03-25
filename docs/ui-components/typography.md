@@ -1,10 +1,10 @@
 ---
-title: Typography
+title: Thunderdome - Flag 1 - Emerge Through the Breach
 parent: UI Components
 nav_order: 1
 ---
 
-# Typography
+# Thunderdome - Flag 1 - Emerge Through the Breach
 {: .no_toc }
 
 ## Table of contents
