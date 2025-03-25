@@ -7,8 +7,8 @@ nav_order: 1
 # Thunderdome - Flag 1 - Emerge Through the Breach
 {: .no_toc }
 
-- TOC
-{:toc}
+## Table of Contents
+{: .no_toc .text-delta }
 
 {% toc heading_level=2 %}
 
