@@ -6,6 +6,9 @@ nav_order: 3
 
 # ThunderDome -  Flag 3 - An Absent Defense
 
+## Table of contents
+{: .no_toc .text-delta }
+
 1. TOC
 {:toc}
 
