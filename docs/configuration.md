@@ -86,8 +86,6 @@ mermaid:
 
 Provide a `path` instead of a `version` key to load the mermaid library from a local file.
 
-See [the Code documentation]({% link docs/ui-components/code/index.md %}#mermaid-diagram-code-blocks) for more configuration options and information.
-
 ## Aux links
 
 ```yaml
