@@ -11,8 +11,6 @@ nav_order: 3
 
 ---
 
-# Flag 3 - An Absent Defense (1)
-
 ## Recap
 
 Right, so let’s continue from where we left off in the flag 2 walkthrough. We found the second flag in an S3 bucket - `mp-clinical-trial-data`. We also found Nacer’s Azure credentials in the snapshot we pulled from the AWS account as well as on the `web-prod` host. Let’s try the tokens we found in the snapshot first and see how we get on. 
