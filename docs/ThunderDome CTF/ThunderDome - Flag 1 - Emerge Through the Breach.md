@@ -7,12 +7,10 @@ nav_order: 1
 # Thunderdome - Flag 1 - Emerge Through the Breach
 {: .no_toc }
 
-## Table of Contents
 1. TOC
 {:toc}
 
 ---
-# Flag 1 - Emerge Through the Breach
 
 ## Starting point - `44.208.228.94`
 
