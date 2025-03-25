@@ -10,6 +10,8 @@ nav_order: 1
 - TOC
 {:toc}
 
+{% toc heading_level=2 %}
+
 ---
 # Flag 1 - Emerge Through the Breach
 
