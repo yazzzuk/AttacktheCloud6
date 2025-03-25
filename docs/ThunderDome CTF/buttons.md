@@ -1,6 +1,6 @@
 ---
 title: Buttons
-parent: UI Components
+parent: ThunderDome CTF
 nav_order: 2
 ---
 
